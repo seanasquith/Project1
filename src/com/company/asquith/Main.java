@@ -3,6 +3,44 @@ package com.company.asquith;
 import java.util.*;
 
 public class Main {
+
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int userOption = -1;
+        String[] taskList = {};
+
+        while (userOption != 0) {
+            System.out.println("Please choose an option: ");
+            System.out.println("(1) Add a task");
+            System.out.println("(2) Remove task");
+            System.out.println("(3) Update a task");
+            System.out.println("(4) List all tasks");
+            System.out.println("(0) Exit.");
+            userOption = input.nextInt();
+            switch (userOption) {
+                case 0:
+                    break;
+                case 1:
+                    taskList = addTask(taskList);
+                    break;
+                case 2:
+                    taskList = removeTask(taskList);
+                    break;
+                case 3:
+                    taskList = updateTask(taskList);
+                    break;
+                case 4:
+                    listTasks(taskList);
+                    break;
+                default:
+                    System.out.println("Invalid option!");
+                    break;
+            }
+        }
+    }
+
+
     public static String[] addTask(String[] taskList) {
         System.out.println("Enter a description of the new task.");
         Scanner input = new Scanner(System.in);
@@ -56,42 +94,6 @@ public class Main {
     public static void listTasks(String[] taskList) {
         for (int i = 0; i < taskList.length; i++) {
             System.out.println((i) + ". " + taskList[i]);
-        }
-    }
-
-
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        int userOption = -1;
-        String[] taskList = {};
-
-        while (userOption != 0) {
-            System.out.println("Please choose an option: ");
-            System.out.println("(1) Add a task");
-            System.out.println("(2) Remove task");
-            System.out.println("(3) Update a task");
-            System.out.println("(4) List all tasks");
-            System.out.println("(0) Exit.");
-            userOption = input.nextInt();
-            switch (userOption) {
-                case 0:
-                    break;
-                case 1:
-                    taskList = addTask(taskList);
-                    break;
-                case 2:
-                    taskList = removeTask(taskList);
-                    break;
-                case 3:
-                    taskList = updateTask(taskList);
-                    break;
-                case 4:
-                    listTasks(taskList);
-                    break;
-                default:
-                    System.out.println("Invalid option!");
-                    break;
-            }
         }
     }
 }

@@ -16,27 +16,41 @@ public class Main {
     }
 
     public static String[] removeTask(String[] taskList) {
-        System.out.println("Enter the index of the task to remove");
+        System.out.println("Enter the index of the task to remove.");
         Scanner input = new Scanner(System.in);
         int numRemove = input.nextInt();
-        String[] newTaskList = new String[taskList.length - 1];
-        for (int i = 0; i < newTaskList.length; i++) {
-            if (newTaskList[i] != taskList[numRemove]) {
-                newTaskList[i] = taskList[i];
+        if (numRemove > (taskList.length - 1) || numRemove < 0) {
+            System.out.println("Enter a valid index!");
+            return taskList;
+        } else {
+            String[] newTaskList = new String[taskList.length - 1];
+            int checkElse = 0;
+            for (int i = 0; i < newTaskList.length; i++) {
+                if (i == numRemove || checkElse == 1) {
+                    newTaskList[i] = taskList[i + 1];
+                    checkElse = 1;
+                } else {
+                    newTaskList[i] = taskList[i];
+                }
             }
+            return newTaskList;
         }
-        return newTaskList;
     }
 
     public static String[] updateTask(String[] taskList) {
-        System.out.println("Enter the index of the task to update");
+        System.out.println("Enter the index of the task to update.");
         Scanner input = new Scanner(System.in);
         int numUpdate = input.nextInt();
-        System.out.println("Enter the new description of the task");
-        Scanner input2 = new Scanner(System.in);
-        String updatedTask = input2.nextLine();
-        taskList[numUpdate] = updatedTask;
-        return taskList;
+        if (numUpdate > (taskList.length - 1) || numUpdate < 0) {
+            System.out.println("Enter a valid index!");
+            return taskList;
+        } else {
+            System.out.println("Enter the new description of the task.");
+            Scanner input2 = new Scanner(System.in);
+            String updatedTask = input2.nextLine();
+            taskList[numUpdate] = updatedTask;
+            return taskList;
+        }
     }
 
     public static void listTasks(String[] taskList) {
@@ -49,7 +63,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int userOption = -1;
-        String[] taskList = {};
+        String[] taskList = {"Task 1", "Task 2", "Task 3", "Task 4", "Task 5"};
 
         while (userOption != 0) {
             System.out.println("Please choose an option: ");
@@ -75,7 +89,7 @@ public class Main {
                     listTasks(taskList);
                     break;
                 default:
-                    System.out.println("Invalid option");
+                    System.out.println("Invalid option!");
                     break;
             }
         }

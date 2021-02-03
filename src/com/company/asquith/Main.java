@@ -63,7 +63,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int userOption = -1;
-        String[] taskList = {"Task 1", "Task 2", "Task 3", "Task 4", "Task 5"};
+        String[] taskList = {};
 
         while (userOption != 0) {
             System.out.println("Please choose an option: ");
